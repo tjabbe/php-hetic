@@ -1,0 +1,15 @@
+{
+  "require": {
+  },
+  "require-dev": {
+    "phpdocumentor/phpdocumentor": "2.*",
+    "phpunit/phpunit": "4.8.*",
+    "squizlabs/php_codesniffer": "2.*"
+  },
+  "autoload": {
+  	"psr-4": {
+      "Repository\\": "Repository/",
+      "Entity\\": "Entity/"
+    }
+  }
+}
