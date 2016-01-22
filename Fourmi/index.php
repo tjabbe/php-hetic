@@ -20,4 +20,8 @@ $fourmiRepository = new FourmiRepository([
 // $fourmi->setTaille(12);
 // $fourmiRepository->updateFourmi($fourmi);
 
+// REMOVE
+// $fourmi = Fourmi::getAll()[0];
+// $fourmiRepository->removeFourmi($fourmi);
+
 Fourmi::printInstances();

@@ -24,7 +24,6 @@ class FourmiRepository
 	public function insertFourmi(Fourmi $fourmi)
 	{
 		$prepare = $this->pdo->prepare('INSERT INTO fourmi (taille, couleur) VALUES (:taille, :couleur)');
-
 		$prepare->bindValue(':taille', $fourmi->taille);
 		$prepare->bindValue(':couleur', $fourmi->couleur);
 
@@ -36,12 +35,21 @@ class FourmiRepository
 	public function updateFourmi(Fourmi $fourmi)
 	{
 		$prepare = $this->pdo->prepare('UPDATE fourmi SET couleur = :couleur, taille = :taille WHERE id = :id');
-
 		$prepare->bindValue(':taille', $fourmi->getTaille());
 		$prepare->bindValue(':couleur', $fourmi->getCouleur());
         $prepare->bindValue(':id', $fourmi->getId());
 
 		$prepare->execute();
+	}
+
+	public function removeFourmi(Fourmi $fourmi)
+	{
+		$prepare = $this->pdo->prepare('DELETE FROM fourmi WHERE id = :id');
+		$prepare->bindValue(':id', $fourmi->getId());
+
+		$prepare->execute();
+
+		unset($fourmi);
 	}
 
 	private function requestAllFourmis()
