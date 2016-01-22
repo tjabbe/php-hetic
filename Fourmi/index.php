@@ -11,7 +11,9 @@ $fourmiRepository = new FourmiRepository([
 ]);
 
 // INSERT
-// $fourmiRepository->insertFourmi(23, 'noire');
+// $fourmi = new Fourmi();
+// $fourmi->setTaille(23)->setCouleur('noire');
+// $fourmiRepository->insertFourmi($fourmi);
 
 // UPDATE
 // $fourmi = Fourmi::getAll()[0];

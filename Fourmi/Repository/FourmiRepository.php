@@ -4,7 +4,7 @@ namespace Repository;
 use \Entity\Fourmi;
 require 'vendor/autoload.php';
 
-class FourmiRepository 
+class FourmiRepository
 {
 	private $pdo;
 
@@ -21,25 +21,19 @@ class FourmiRepository
 	    $this->hydrate();
 	}
 
-	public function insertFourmi($taille, $couleur)
+	public function insertFourmi(Fourmi $fourmi)
 	{
 		$prepare = $this->pdo->prepare('INSERT INTO fourmi (taille, couleur) VALUES (:taille, :couleur)');
 
-		$prepare->bindValue(':taille', $taille);
-		$prepare->bindValue(':couleur', $couleur);
+		$prepare->bindValue(':taille', $fourmi->taille);
+		$prepare->bindValue(':couleur', $fourmi->couleur);
 
 		$prepare->execute();
 
-		$fourmi = new Fourmi();
-		$fourmi
-			->setTaille($taille)
-			->setCouleur($couleur)
-			->setId($this->pdo->lastInsertId());
-
-        return $fourmi;
+		$fourmi->setId($this->pdo->lastInsertId());
 	}
 
-	public function updateFourmi($fourmi)
+	public function updateFourmi(Fourmi $fourmi)
 	{
 		$prepare = $this->pdo->prepare('UPDATE fourmi SET couleur = :couleur, taille = :taille WHERE id = :id');
 
@@ -53,7 +47,7 @@ class FourmiRepository
 	private function requestAllFourmis()
 	{
 		$query = $this->pdo->query('SELECT id, taille, couleur FROM fourmi');
-		
+
 		return $query->fetchAll();
 	}
 
