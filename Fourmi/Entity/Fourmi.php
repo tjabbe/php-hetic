@@ -3,6 +3,7 @@ namespace Entity;
 
 use \Repository\FourmiRepository;
 require 'vendor/autoload.php';
+
 class Fourmi 
 {
 	// @var int $id

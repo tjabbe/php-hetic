@@ -13,7 +13,7 @@ class FourmiRepository
 	    try{
 	        $pdo = new \PDO('mysql:host='.$params['DB_HOST'].';dbname='.$params['DB_NAME'], $params['DB_USERNAME'], $params['DB_PASSWORD']);
 	        $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
-	    } catch (Exception $e){
+	    } catch (\Exception $e){
 	    	die('Could not connect');
 		}
 
@@ -54,8 +54,8 @@ class FourmiRepository
 	{
 		$prepare = $this->pdo->prepare('INSERT INTO fourmi (taille, couleur)
 										VALUES (:taille, :couleur)');
-		$prepare->bindValue(':taille', $fourmi->taille);
-		$prepare->bindValue(':couleur', $fourmi->couleur);
+		$prepare->bindValue(':taille', $fourmi->getTaille());
+		$prepare->bindValue(':couleur', $fourmi->getCouleur());
 
 		$prepare->execute();
 
@@ -96,7 +96,7 @@ class FourmiRepository
                     throw new \Exception('Not a Fourmi', 10);
                 }
 
-                $_fourmi = $this->remove($_fourmi);
+                $this->remove($_fourmi);
             }
 
             return $this;
@@ -113,9 +113,15 @@ class FourmiRepository
 										WHERE id = :id');
         $prepare->bindValue(':id', $fourmi->getId());
 
-        $prepare->execute();
+        $exec = $prepare->execute();
 
-        unset($fourmi);
+        if ($exec){
+       		unset($fourmi);
+        }
+
+        else {
+        	throw new \Exception('Fourmi not deleted', 12);
+        }
     }
 
 	private function requestAllFourmis()
