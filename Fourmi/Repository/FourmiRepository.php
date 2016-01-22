@@ -28,13 +28,26 @@ class FourmiRepository
 		$prepare->bindValue(':taille', $taille);
 		$prepare->bindValue(':couleur', $couleur);
 
-		$exec = $prepare->execute();
+		$prepare->execute();
 
 		$fourmi = new Fourmi();
 		$fourmi
 			->setTaille($taille)
 			->setCouleur($couleur)
 			->setId($this->pdo->lastInsertId());
+
+        return $fourmi;
+	}
+
+	public function updateFourmi($fourmi)
+	{
+		$prepare = $this->pdo->prepare('UPDATE fourmi SET couleur = :couleur, taille = :taille WHERE id = :id');
+
+		$prepare->bindValue(':taille', $fourmi->getTaille());
+		$prepare->bindValue(':couleur', $fourmi->getCouleur());
+        $prepare->bindValue(':id', $fourmi->getId());
+
+		$prepare->execute();
 	}
 
 	private function requestAllFourmis()
