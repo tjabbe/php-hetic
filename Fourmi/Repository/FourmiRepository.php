@@ -21,40 +21,107 @@ class FourmiRepository
 	    $this->hydrate();
 	}
 
-	public function insertFourmi(Fourmi $fourmi)
+	public function persist($fourmi)
 	{
-		$prepare = $this->pdo->prepare('INSERT INTO fourmi (taille, couleur) VALUES (:taille, :couleur)');
+        if ($fourmi instanceof Fourmi){
+            if ($fourmi->getId() !== null){
+                return $this->updateFourmi($fourmi);
+            }
+
+            else {
+                return $this->insertFourmi($fourmi);
+            }
+        }
+
+        else if (is_array($fourmi)){
+            foreach($fourmi as $_fourmi){
+                if (!$_fourmi instanceof Fourmi){
+                    throw new \Exception('Not a Fourmi', 10);
+                }
+
+                $_fourmi = $this->persist($_fourmi);
+            }
+
+            return $fourmi;
+        }
+
+        else {
+            throw new \Exception('Not a Fourmi or an Array', 11);
+        }
+	}
+
+	private function insertFourmi(Fourmi $fourmi)
+	{
+		$prepare = $this->pdo->prepare('INSERT INTO fourmi (taille, couleur)
+										VALUES (:taille, :couleur)');
 		$prepare->bindValue(':taille', $fourmi->taille);
 		$prepare->bindValue(':couleur', $fourmi->couleur);
 
 		$prepare->execute();
 
 		$fourmi->setId($this->pdo->lastInsertId());
+		return $fourmi;
 	}
 
-	public function updateFourmi(Fourmi $fourmi)
+	private function updateFourmi(Fourmi $fourmi)
 	{
-		$prepare = $this->pdo->prepare('UPDATE fourmi SET couleur = :couleur, taille = :taille WHERE id = :id');
+		$prepare = $this->pdo->prepare('UPDATE fourmi
+										SET couleur = :couleur, taille = :taille
+										WHERE id = :id');
 		$prepare->bindValue(':taille', $fourmi->getTaille());
 		$prepare->bindValue(':couleur', $fourmi->getCouleur());
-        $prepare->bindValue(':id', $fourmi->getId());
-
-		$prepare->execute();
-	}
-
-	public function removeFourmi(Fourmi $fourmi)
-	{
-		$prepare = $this->pdo->prepare('DELETE FROM fourmi WHERE id = :id');
 		$prepare->bindValue(':id', $fourmi->getId());
 
 		$prepare->execute();
-
-		unset($fourmi);
+		return $fourmi;
 	}
+
+	public function remove($fourmi)
+	{
+        if ($fourmi instanceof Fourmi){
+            if ($fourmi->getId() !== null){
+                $this->removeFourmi($fourmi);
+                return $this;
+            }
+
+            else {
+                unset($fourmi);
+                return $this;
+            }
+        }
+
+        else if (is_array($fourmi)){
+            foreach($fourmi as $_fourmi){
+                if (!$_fourmi instanceof Fourmi){
+                    throw new \Exception('Not a Fourmi', 10);
+                }
+
+                $_fourmi = $this->remove($_fourmi);
+            }
+
+            return $this;
+        }
+
+        else {
+            throw new \Exception('Not a Fourmi or an Array', 11);
+        }
+	}
+
+    private function removeFourmi(Fourmi $fourmi)
+    {
+        $prepare = $this->pdo->prepare('DELETE FROM fourmi
+										WHERE id = :id');
+        $prepare->bindValue(':id', $fourmi->getId());
+
+        $prepare->execute();
+
+        unset($fourmi);
+    }
 
 	private function requestAllFourmis()
 	{
-		$query = $this->pdo->query('SELECT id, taille, couleur FROM fourmi');
+		$query = $this->pdo->query('SELECT id, taille, couleur
+									FROM fourmi');
 
 		return $query->fetchAll();
 	}

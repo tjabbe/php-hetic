@@ -13,12 +13,12 @@ $fourmiRepository = new FourmiRepository([
 // INSERT
 // $fourmi = new Fourmi();
 // $fourmi->setTaille(23)->setCouleur('noire');
-// $fourmiRepository->insertFourmi($fourmi);
+// $fourmiRepository->persist($fourmi);
 
 // UPDATE
 // $fourmi = Fourmi::getAll()[0];
 // $fourmi->setTaille(12);
-// $fourmiRepository->updateFourmi($fourmi);
+// $fourmiRepository->persist($fourmi);
 
 // REMOVE
 // $fourmi = Fourmi::getAll()[0];
