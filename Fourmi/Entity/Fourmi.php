@@ -76,12 +76,6 @@ class Fourmi
         return $this;
     }
 
-    public function addToRepository($fourmiRepository)
-    {
-    	$insertResult = $fourmiRepository->insertFourmi($this->taille, $this->couleur);
-        $this->setId($insertResult);
-    }
-
     private static $instances = [];
 
     public static function printInstances()

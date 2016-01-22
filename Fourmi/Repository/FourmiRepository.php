@@ -30,7 +30,11 @@ class FourmiRepository
 
 		$exec = $prepare->execute();
 
-		return $this->pdo->lastInsertId();
+		$fourmi = new Fourmi();
+		$fourmi
+			->setTaille($taille)
+			->setCouleur($couleur)
+			->setId($this->pdo->lastInsertId());
 	}
 
 	private function requestAllFourmis()

@@ -10,11 +10,6 @@ $fourmiRepository = new FourmiRepository([
 	'DB_PASSWORD' => ''
 ]);
 
-/*
-$fourmi = new Fourmi();
-$fourmi->setTaille(23);
-$fourmi->setCouleur('noire');
-$fourmi->addToRepository($fourmiRepository);
-*/
+// $fourmiRepository->insertFourmi(23, 'noire');
 
 Fourmi::printInstances();
