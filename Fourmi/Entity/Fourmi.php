@@ -39,6 +39,7 @@ class Fourmi
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -55,6 +56,7 @@ class Fourmi
     public function setCouleur($couleur)
     {
         $this->couleur = $couleur;
+        return $this;
     }
 
     /**
@@ -71,12 +73,13 @@ class Fourmi
     public function setTaille($taille)
     {
         $this->taille = $taille;
+        return $this;
     }
 
     public function addToRepository($fourmiRepository)
     {
-    	$insert = $fourmiRepository->insertFourmi($this->taille, $this->couleur);
-        $this->setId($insert);
+    	$insertResult = $fourmiRepository->insertFourmi($this->taille, $this->couleur);
+        $this->setId($insertResult);
     }
 
     private static $instances = [];
