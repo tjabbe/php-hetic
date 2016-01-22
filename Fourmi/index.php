@@ -22,6 +22,6 @@ $fourmiRepository = new FourmiRepository([
 
 // REMOVE
 // $fourmi = Fourmi::getAll()[0];
-// $fourmiRepository->removeFourmi($fourmi);
+// $fourmiRepository->remove($fourmi);
 
 Fourmi::printInstances();
