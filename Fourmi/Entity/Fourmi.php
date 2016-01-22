@@ -83,8 +83,6 @@ class Fourmi
     	echo '<pre>';
     	print_r(self::$instances);
     	echo '</pre>';
-
-        return $this;
     }
 
     public static function getAll()
