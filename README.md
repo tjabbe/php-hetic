@@ -1,2 +1,2 @@
-# php-hagrid
+# php-hetic
 Bonjour
