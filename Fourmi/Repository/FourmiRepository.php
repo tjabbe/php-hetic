@@ -14,7 +14,8 @@ class FourmiRepository
 	        $pdo = new \PDO('mysql:host='.$params['DB_HOST'].';dbname='.$params['DB_NAME'], $params['DB_USERNAME'], $params['DB_PASSWORD']);
 	        $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
 	    } catch (\Exception $e){
-	    	die('Could not connect');
+            echo('<pre>');
+	    	die($e);
 		}
 
 		$this->pdo = $pdo;
