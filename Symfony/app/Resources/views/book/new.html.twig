@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Book creation</h1>
+
+    {{ form_start(form, {'attr': {'class': 'form'}}) }}
+        {{ form_widget(form.children.title, {'attr': {'class': 'form-control', 'placeholder': 'Title'}}) }}
+    <br>
+        {{ form_widget(form.children.description, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+    <br>
+        {{ form_widget(form.children.pageCount, {'attr': {'class': 'form-control', 'placeholder': 'Page count'}}) }}
+    <br>
+        <div class="col-md-4">
+            {{ form_widget(form.children.releaseDate.year, {'attr': {'class': 'form-control', 'placeholder': 'Year'}}) }}
+        </div>
+
+        <div class="col-md-4">
+            {{ form_widget(form.children.releaseDate.month, {'attr': {'class': 'form-control', 'placeholder': 'Month'}}) }}
+        </div>
+
+        <div class="col-md-4">
+            {{ form_widget(form.children.releaseDate.day, {'attr': {'class': 'form-control', 'placeholder': 'Day'}}) }}
+        </div>
+    <br>
+    <br>
+    <br>
+
+        <input class="btn btn-success form-control" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('book_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

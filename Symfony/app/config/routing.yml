@@ -1,6 +1,6 @@
-training:
+training_book:
     resource: "@TrainingBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /book
 
 app:
     resource: "@AppBundle/Controller/"
