@@ -1,0 +1,3 @@
+training_homepage:
+    path:     /
+    defaults: { _controller: TrainingBundle:Default:index }

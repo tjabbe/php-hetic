@@ -1,0 +1,22 @@
+TrainingBundle\Entity\Book:
+    type: entity
+    table: null
+    repositoryClass: TrainingBundle\Repository\BookRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        pageCount:
+            type: integer
+        releaseDate:
+            type: date
+    lifecycleCallbacks: {  }
