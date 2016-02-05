@@ -1,0 +1,3 @@
+student_student:
+    resource: "@StudentBundle/Resources/config/routing/student.yml"
+    prefix:   /

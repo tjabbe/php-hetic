@@ -1,0 +1,9 @@
+student_index:
+    path:     /
+    defaults: { _controller: "StudentBundle:Student:show" }
+    methods:  GET
+
+student_show:
+    path:     /{id}/show
+    defaults: { _controller: "StudentBundle:Student:details" }
+    methods:  GET

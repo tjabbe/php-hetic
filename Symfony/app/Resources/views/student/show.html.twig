@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Student</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ student.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ student.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prénom</th>
+            <td>{{ student.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Sexe</th>
+            <td>{{ student.sexe }}</td>
+        </tr>
+        <tr>
+            <th>Date de naissance</th>
+            <td>{{ student.dateNaissance|date('d/m/Y') }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('student_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
