@@ -7,3 +7,18 @@ student_show:
     path:     /{id}/show
     defaults: { _controller: "StudentBundle:Student:details" }
     methods:  GET
+
+student_add:
+  path:     /add
+  defaults: { _controller: "StudentBundle:Student:add" }
+  methods:  [GET, POST]
+
+student_edit:
+  path:     /{id}/edit
+  defaults: { _controller: "StudentBundle:Student:edit" }
+  methods:  [GET, POST]
+
+student_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "StudentBundle:Student:delete" }
+    methods:  DELETE

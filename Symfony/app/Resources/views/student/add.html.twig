@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <h1>Add a student</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form.children.nom, {'attr': {'placeholder': 'Nom'}}) }}
+        {{ form_widget(form.children.prenom, {'attr': {'placeholder': 'Prénom'}}) }}
+
+        {{ form_widget(form.children.sexe) }}
+        {{ form_widget(form.children.sexe) }}
+
+        <div class="col-md-4">
+            {{ form_widget(form.children.dateNaissance.day, {'attr': {'placeholder': 'Jour'}}) }}
+        </div>
+
+        <div class="col-md-4">
+            {{ form_widget(form.children.dateNaissance.month, {'attr': {'placeholder': 'Mois'}}) }}
+        </div>
+
+        <div class="col-md-4">
+            {{ form_widget(form.children.dateNaissance.year, {'attr': {'placeholder': 'Année'}}) }}
+        </div>
+
+        <input class="btn btn-success form-control" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('student_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

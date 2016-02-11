@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <h1>Edit student</h1>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form.children.nom, {'attr': {'placeholder': 'Nom'}}) }}
+    {{ form_widget(edit_form.children.prenom, {'attr': {'placeholder': 'Prénom'}}) }}
+
+    {{ form_widget(edit_form.children.sexe) }}
+    {{ form_widget(edit_form.children.sexe) }}
+
+    <div class="col-md-4">
+        {{ form_widget(edit_form.children.dateNaissance.day, {'attr': {'placeholder': 'Jour'}}) }}
+    </div>
+
+    <div class="col-md-4">
+        {{ form_widget(edit_form.children.dateNaissance.month, {'attr': {'placeholder': 'Mois'}}) }}
+    </div>
+
+    <div class="col-md-4">
+        {{ form_widget(edit_form.children.dateNaissance.year, {'attr': {'placeholder': 'Année'}}) }}
+    </div>
+    <input class="btn btn-success form-control" type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    {{ form_start(delete_form) }}
+    <input class="btn btn-danger form-control" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('student_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

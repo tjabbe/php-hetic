@@ -5,6 +5,25 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+            <style>
+                input {
+                    margin: 20px;
+                }
+
+                input[type="submit"]{
+                    margin-left: 0;
+                }
+
+                .radio {
+                    display: inline;
+                    margin-left: 20px;
+                }
+
+                #student_sexe {
+                    padding-left: 20px;
+                    margin-bottom: 20px;
+                }
+            </style>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
