@@ -22,3 +22,8 @@ student_delete:
     path:     /{id}/delete
     defaults: { _controller: "StudentBundle:Student:delete" }
     methods:  DELETE
+
+student_dateNaissanceDESC:
+    path: /datenaissance
+    defaults: { _controller: "StudentBundle:Student:dateNaissanceDESC" }
+    methods: GET

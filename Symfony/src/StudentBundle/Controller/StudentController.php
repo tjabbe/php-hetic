@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use StudentBundle\Entity\Student;
 use StudentBundle\Form\StudentType;
+use StudentBundle\Repository\StudentRepository;
 
 class StudentController extends Controller
 {
@@ -87,5 +88,16 @@ class StudentController extends Controller
             ->setAction($this->generateUrl('student_delete', array('id' => $student->getId())))
             ->setMethod('DELETE')
             ->getForm();
+    }
+
+    public function dateNaissanceDESCAction()
+    {
+        $er = $this->getDoctrine()->getEntityManager()->getRepository('StudentBundle:Student');
+
+        $students = $er->getDateNaissanceDESC();
+
+        return $this->render('student/datenaissance.html.twig', array(
+            'students' => $students
+        ));
     }
 }

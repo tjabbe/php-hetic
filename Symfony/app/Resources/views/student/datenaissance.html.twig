@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Student list</h1>
+
+    <table class="table .table-striped .table-bordered .table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Sexe</th>
+            <th>Date de naissance</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td><a href="{{ path('student_show', { 'id': student.id }) }}">{{ student.id }}</a></td>
+                <td>{{ student.nom }}</td>
+                <td>{{ student.prenom }}</td>
+                <td>{{ student.sexe }}</td>
+                <td>{{ student.dateNaissance|date('d/m/Y') }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('student_show', { 'id': student.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('student_edit', { 'id': student.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('student_index') }}">Back to the list</a>
+{% endblock %}

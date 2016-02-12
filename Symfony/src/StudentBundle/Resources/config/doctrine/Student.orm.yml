@@ -1,5 +1,6 @@
 StudentBundle\Entity\Student:
     type: entity
+    repositoryClass: StudentBundle\Repository\StudentRepository
     table: student
     id:
         id:
