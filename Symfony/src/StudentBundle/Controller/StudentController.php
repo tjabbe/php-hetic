@@ -90,11 +90,11 @@ class StudentController extends Controller
             ->getForm();
     }
 
-    public function dateNaissanceDESCAction()
+    public function dateNaissanceAction()
     {
         $er = $this->getDoctrine()->getEntityManager()->getRepository('StudentBundle:Student');
 
-        $students = $er->getDateNaissanceDESC();
+        $students = $er->findAllOrderByDateNaissance();
 
         return $this->render('student/datenaissance.html.twig', array(
             'students' => $students
