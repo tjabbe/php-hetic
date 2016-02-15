@@ -1,0 +1,6 @@
+StudentBundle\Entity\Student:
+    student_{1..100}:
+        nom: <lastName()>
+        prenom: <firstName()>
+        sexe: <randomElement($array = array ('femme', 'homme'))>
+        dateNaissance: <dateTimeBetween($startDate = '-100 years', $endDate = '-10 years')>

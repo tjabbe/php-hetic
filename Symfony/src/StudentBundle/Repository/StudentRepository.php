@@ -12,7 +12,7 @@ class StudentRepository extends EntityRepository
      */
     public function findAllOrderByDateNaissance(){
         $qb = $this->createQueryBuilder();
-
+        
         $qb->select(array('s'))->from('StudentBundle:Student', 's')->orderBy('s.dateNaissance', 'ASC');
 
         return $qb->getQuery()->execute();
