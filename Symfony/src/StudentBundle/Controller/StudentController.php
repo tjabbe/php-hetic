@@ -14,7 +14,14 @@ class StudentController extends Controller
     public function showAction(){
         $em = $this->getDoctrine()->getManager();
 
+
         $students = $em->getRepository('StudentBundle:Student')->findAll();
+
+        $calcul = $this->get('student.calcul');
+
+        foreach ($students as $student){
+            $student->age = $calcul->calculAge($student->getDateNaissance());
+        }
 
         return $this->render('student/index.html.twig', array(
             'students' => $students,
@@ -22,8 +29,11 @@ class StudentController extends Controller
     }
 
     public function detailsAction(Student $student){
+        $calcul = $this->get('student.calcul');
+        $student->age = $calcul->calculAge($student->getDateNaissance());
+
         return $this->render('student/show.html.twig', array(
-            'student' => $student
+            'student'     => $student
         ));
     }
 
