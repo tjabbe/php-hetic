@@ -3,4 +3,5 @@ StudentBundle\Entity\Student:
         prenom: <firstName()>
         nom: <lastName()>
         sexe: <randomElement($array = array ('femme', 'homme'))>
+        idCategory: <numberBetween(1, 2)>
         dateNaissance: <dateTimeBetween($startDate = '-100 years', $endDate = '-10 years')>

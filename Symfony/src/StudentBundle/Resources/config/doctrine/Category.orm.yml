@@ -1,0 +1,24 @@
+StudentBundle\Entity\Category:
+    type: entity
+    table: category
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        label:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    oneToMany:
+        students:
+            targetEntity: Student
+            mappedBy: id_category
+    lifecycleCallbacks: {  }

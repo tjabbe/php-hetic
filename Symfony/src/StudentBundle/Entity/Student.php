@@ -136,4 +136,59 @@ class Student
     {
         return $this->dateNaissance;
     }
+    /**
+     * @var integer
+     */
+    private $idCategory;
+
+
+    /**
+     * Set idCategory
+     *
+     * @param integer $idCategory
+     *
+     * @return Student
+     */
+    public function setIdCategory($idCategory)
+    {
+        $this->idCategory = $idCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get idCategory
+     *
+     * @return integer
+     */
+    public function getIdCategory()
+    {
+        return $this->idCategory;
+    }
+
+    protected $category;
+
+    /**
+     * Set category
+     *
+     * @param \StudentBundle\Entity\Category $category
+     *
+     * @return Student
+     */
+    public function setCategory(\StudentBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \StudentBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

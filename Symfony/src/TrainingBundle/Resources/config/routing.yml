@@ -1,3 +1,0 @@
-training_book:
-    resource: "@TrainingBundle/Resources/config/routing/book.yml"
-    prefix:   /
